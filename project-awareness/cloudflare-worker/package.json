@@ -1,0 +1,55 @@
+{
+  "name": "@chittyops/project-awareness-worker",
+  "version": "1.0.0",
+  "description": "ChittyOps Project Awareness Cloudflare Worker - Global MCP server deployment",
+  "main": "src/worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:staging": "wrangler deploy --env staging",
+    "build": "esbuild src/worker.js --bundle --format=esm --outfile=dist/worker.js --platform=browser --target=es2022 --external:cloudflare:*",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "format": "prettier --write src/",
+    "typecheck": "tsc --noEmit",
+    "tail": "wrangler tail",
+    "kv:list": "wrangler kv:namespace list",
+    "kv:create": "npm run kv:create:sessions && npm run kv:create:projects && npm run kv:create:sync",
+    "kv:create:sessions": "wrangler kv:namespace create SESSION_STORE",
+    "kv:create:projects": "wrangler kv:namespace create PROJECT_STORE", 
+    "kv:create:sync": "wrangler kv:namespace create CROSS_PLATFORM_SYNC",
+    "secrets:list": "wrangler secret list",
+    "setup:secrets": "node scripts/setup-secrets.js",
+    "analytics": "wrangler analytics",
+    "r2:create": "wrangler r2 bucket create chittyops-project-data"
+  },
+  "keywords": [
+    "chittyos",
+    "chittyops", 
+    "project-awareness",
+    "cloudflare-workers",
+    "mcp-server",
+    "cross-platform",
+    "ai-integration",
+    "session-management"
+  ],
+  "author": "ChittyOS Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240718.0",
+    "@types/node": "^20.14.0",
+    "esbuild": "^0.21.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.0",
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0",
+    "wrangler": "^3.60.0"
+  },
+  "dependencies": {
+    "itty-router": "^5.0.0",
+    "jose": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

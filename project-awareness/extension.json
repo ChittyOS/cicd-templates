@@ -1,0 +1,51 @@
+{
+  "name": "ChittyChat Project Awareness",
+  "version": "1.0.0", 
+  "description": "Intelligent project awareness and switching system integrated with ChittyChat",
+  "main": "index.js",
+  "capabilities": [
+    "session_analysis",
+    "project_detection", 
+    "intelligent_switching",
+    "user_prompting"
+  ],
+  "hooks": {
+    "onStart": "onClaudeStart",
+    "preToolUse": "onPreToolUse", 
+    "postToolUse": "onPostToolUse",
+    "onDirectoryChange": "onDirectoryChange",
+    "onSessionEnd": "onSessionEnd",
+    "onSessionResume": "onClaudeStart",
+    "onSessionClear": "onSessionEnd",
+    "onSessionCompact": "onSessionEnd"
+  },
+  "permissions": [
+    "read_sessions",
+    "read_projects", 
+    "prompt_user",
+    "access_chittychat",
+    "force_compaction",
+    "cross_session_alignment"
+  ],
+  "configuration": {
+    "cross_session_alignment": {
+      "enabled": true,
+      "force_before_critical_tools": true,
+      "compaction_threshold": 30,
+      "alignment_timeout": 5000,
+      "critical_tools": ["Task", "TodoWrite", "Bash"],
+      "critical_file_patterns": ["*.claude/*", "*session*.json", "*chitty*"]
+    },
+    "realtime_restoration": {
+      "enabled": true,
+      "sync_interval": 300000,
+      "auto_restore_project_context": true,
+      "memory_integration": true
+    }
+  },
+  "dependencies": {
+    "chittychat": "^1.0.0",
+    "project-analyzer": "./lib/project-analyzer.js",
+    "session-parser": "./lib/session-parser.js"
+  }
+}

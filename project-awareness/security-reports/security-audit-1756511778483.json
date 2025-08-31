@@ -1,0 +1,1893 @@
+{
+  "metadata": {
+    "auditDate": "2025-08-29T23:56:18.482Z",
+    "auditDuration": "230ms",
+    "systemUnderTest": "ChittyOS Project Awareness System",
+    "version": "1.0.0",
+    "auditor": "ChittyOS Security QA Coordinator"
+  },
+  "executiveSummary": {
+    "totalFindings": 106,
+    "riskScore": 100,
+    "riskLevel": "CRITICAL",
+    "criticalIssues": 0,
+    "highIssues": 3,
+    "mediumIssues": 96,
+    "lowIssues": 6,
+    "recommendationsSummary": "3 high-priority security issues identified. Address before production deployment."
+  },
+  "findings": [
+    {
+      "id": "23162bf6-acba-4620-8d32-6b9b596ed4b2",
+      "category": "Directory Permissions",
+      "title": "World-Readable Sensitive Directory",
+      "severity": "MEDIUM",
+      "description": "Sensitive directory is readable by all users",
+      "file": "/Users/nb/.cloude",
+      "line": null,
+      "recommendation": "Restrict directory permissions: chmod o-r",
+      "timestamp": "2025-08-29T23:56:18.256Z"
+    },
+    {
+      "id": "0c6c108c-d020-4641-8967-be01683835f2",
+      "category": "Directory Permissions",
+      "title": "World-Readable Sensitive Directory",
+      "severity": "MEDIUM",
+      "description": "Sensitive directory is readable by all users",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment",
+      "line": null,
+      "recommendation": "Restrict directory permissions: chmod o-r",
+      "timestamp": "2025-08-29T23:56:18.256Z"
+    },
+    {
+      "id": "3292780a-be30-43d5-bffd-ed7841f8ac88",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 19,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "e8dcac42-c968-4623-88da-0c70e0906b89",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 20,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "a6f3208d-6439-4a04-88e4-b5421aa7beaa",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 21,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "7c6d4f60-0461-4c72-b69c-9f23db33d367",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 22,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "b9ee5989-a514-4576-8515-997c69d4722c",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 33,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "ae9bba79-2f65-421e-9610-768186c4f335",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 58,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "6cdd4e17-8ce5-4f96-a25b-ed57633fc9eb",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 59,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "602eba5d-f316-4f25-87be-75e86a0df8b6",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 64,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "31811133-c4ac-4017-9ba6-25fe63da0cb6",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 65,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.404Z"
+    },
+    {
+      "id": "2d44026c-7c84-43f5-abc6-020f890a072f",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 71,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "6c125981-f288-45e4-a053-abaa43ab170d",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 72,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "92a8a95e-55c1-4a79-be51-f4617b21505c",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 78,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "96546340-4c88-4f49-ae52-be7a84425c5b",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 79,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "88768a0b-a87d-457f-bb4c-e256f7677efa",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 86,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "68a6f75c-5e21-4033-b0a5-f53cea936b7c",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 96,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "aec9321b-353c-4f3e-a0a7-dcc07069be66",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 99,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "aeb383e5-074b-4c7d-85e4-054dc8703e7d",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 100,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "0c5c02d8-9112-4b76-aed4-1fb8a7fed8d7",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 104,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "a575c20e-ef3c-46f6-b556-fab12b18d75f",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 105,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "70cf1527-faa7-469e-b6b5-cd17747af63c",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 106,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "d7e81ad6-a7e2-49eb-9d75-eb8d91ae60ac",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 110,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "f2fd1348-6859-4a46-9352-15a7ec0a17cb",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 122,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "9359190a-a102-4b4a-9892-08bdd36d29e7",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 123,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "44ccb15f-7eb8-4ddf-84da-8cd5a77d1f9e",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 135,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "12fbddac-bf53-451e-9807-6c4c2ccc4711",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 136,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "4018c18a-25b8-4fa6-a132-7d7057bd73c5",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 142,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "5590a06a-a867-4e92-b898-4245196292d7",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 143,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "b25b1020-78c2-4e86-8443-77427db34a50",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 153,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "0a492d66-e3e6-413b-9d95-7e8f06640203",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 154,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "4ad151f7-7a43-4590-b802-7d3af1b205f0",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 183,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "31c1d34c-d428-486e-9af4-7bf3be5e17eb",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 184,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "9bf5e2f8-5730-46ca-8090-af5b69c2188a",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 185,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "f82f773d-3948-4cf7-934b-9300f5c5d923",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 186,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "5c41b6d8-9073-4ddb-8d60-c836946eae81",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 188,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "46e3f9f0-7790-4350-8103-2e92112f9995",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 192,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "67c5249c-2abd-455e-b097-4b07aff85cb3",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 193,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "9cb88fc2-55c4-4eb3-a6c6-54f2bc3c9319",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 206,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "a0a6020e-1e89-41f9-9e8b-76eba021d2fe",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 207,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "3bd9448b-6278-4c2c-9ef3-b6018d07cf58",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 208,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "bfdf7bb1-c67f-4ba7-b7d0-1cef787135c3",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 209,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "8a341f0b-6a75-4b24-b6e8-ddffa8100775",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 211,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "8ca97419-4545-4f8a-a272-6b53eb5d4f27",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 231,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "ccb57780-a75d-4c04-9941-e755d265dc55",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 275,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "02e9c32d-1b78-4e7a-8dd3-2a7274c9f39f",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 276,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "8d890f32-2ba5-40ed-b9b9-54e955f2370a",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 278,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.405Z"
+    },
+    {
+      "id": "6a28d3c6-838c-4d56-b779-f284bbcda280",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 281,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "02fa208b-9f3d-4164-8e05-b0d25a1f286a",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 317,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "1680c052-257d-4934-8e6b-7f915494c26e",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 318,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "bddcfa43-532c-486f-a19a-c66abfc64467",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 320,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "16ff4c5c-096c-4ebf-8035-96887917eb31",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 323,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "09331b46-db2d-4164-b52e-18a248d5f8bc",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 368,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "0d7676f9-883b-4c6b-aa25-c355cdb60a1d",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 380,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "339d74ac-cda0-4a68-8be0-f50d3a1d0b03",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 385,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "135aafd7-2649-4c24-a239-091abfcc7ced",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 415,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "ccb0f9ed-83b8-4bbc-8aa6-a3451c60d23d",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 446,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "9126120b-c035-4d5a-8c37-3358f1daa876",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 447,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "86b6da65-d270-411f-8dd9-102569fe6805",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 449,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "65e57c22-5808-4aa3-a517-538e11153cab",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 450,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "9bf4e97e-e0f5-49a7-b90e-f491154cffc2",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 459,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "4bf90eed-2a33-4e73-ba2a-bb9182322284",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 468,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "8d709565-1256-4a45-b9d1-957ba8bc87be",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 482,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "6e1f4b20-01c9-40dd-8b57-62ea1ea2dcd5",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 483,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "0c7f309f-6ca1-4880-8133-a0b1b14566d6",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 485,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "973e8601-e6cf-4489-95a4-ae247343651c",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 525,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "ab7dd88b-cc9b-499f-ab57-96ff81511bad",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 532,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "d61dd9fa-9a07-4639-bf19-1ce9c691283c",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 579,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "1d98b3b9-6406-4bd5-aae9-496cbdbb468b",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 584,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "0c60783a-becd-4aae-bbcf-705d9c89d6e7",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 609,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "8dbf298a-9ebe-44f2-b520-8a10d175fb1f",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 620,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "8b57b169-03e7-424c-b3e5-e0b405e715ad",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 621,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.406Z"
+    },
+    {
+      "id": "d6048d41-298c-4f95-b549-62f0a35784f0",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 622,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "b783eb1d-4f0a-4018-9ea6-4b13f27316bf",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 624,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "d7dba821-f385-4ff5-96f5-059b3830e229",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 641,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "c5659c6a-b96c-442b-b6a6-f5b6fbb50743",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 645,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "5a51863a-a403-4733-b4ad-77c5e6c6f513",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 646,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "cd3bb41f-425d-4994-8bc5-00fa297ad2ac",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 647,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "0ebb5051-1d65-464f-a154-d14fb40cc19d",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 653,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "93c7d571-ae56-4cff-b958-17044704116f",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 669,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "a569b025-dba3-4ec9-b999-f6b588618f5f",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 670,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "e6a0b1c1-e347-44c9-a7da-6e7ae3804f16",
+      "category": "Shell Injection",
+      "title": "Unquoted Variable in Shell Script",
+      "severity": "MEDIUM",
+      "description": "Unquoted variables can lead to word splitting and glob expansion",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+      "line": 690,
+      "recommendation": "Quote all variables: \"$variable\" instead of $variable",
+      "timestamp": "2025-08-29T23:56:18.407Z"
+    },
+    {
+      "id": "a8fc3bde-abe0-4465-a2da-811083647cc2",
+      "category": "Security Best Practice",
+      "title": "Environment Variables Used",
+      "severity": "INFO",
+      "description": "Application correctly uses environment variables for configuration",
+      "file": null,
+      "line": null,
+      "recommendation": "Continue using environment variables for sensitive configuration",
+      "timestamp": "2025-08-29T23:56:18.409Z"
+    },
+    {
+      "id": "f814bd68-ef14-43ac-bd53-cd20eea4690d",
+      "category": "Data Protection",
+      "title": "No Encryption Implementation Found",
+      "severity": "HIGH",
+      "description": "Sensitive data may be stored without encryption",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+      "line": null,
+      "recommendation": "Implement encryption for sensitive data storage using Node.js crypto module",
+      "timestamp": "2025-08-29T23:56:18.440Z"
+    },
+    {
+      "id": "9f446d01-d329-4626-a9f4-afeee05df9d5",
+      "category": "Data Access Control",
+      "title": "World-Readable Data Directory",
+      "severity": "MEDIUM",
+      "description": "Data directory is readable by other users",
+      "file": "/Users/nb/.cloude",
+      "line": null,
+      "recommendation": "Restrict directory permissions: chmod 700",
+      "timestamp": "2025-08-29T23:56:18.441Z"
+    },
+    {
+      "id": "8712af53-bd60-44ab-a44a-4c93513fdbdf",
+      "category": "WebSocket Security",
+      "title": "WebSocket Usage Detected",
+      "severity": "LOW",
+      "description": "WebSocket connections should use WSS and validate origins",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+      "line": null,
+      "recommendation": "Use WSS instead of WS and implement origin validation",
+      "timestamp": "2025-08-29T23:56:18.441Z"
+    },
+    {
+      "id": "e810cf24-b20e-4406-aae0-41f631f51354",
+      "category": "WebSocket Security",
+      "title": "WebSocket Usage Detected",
+      "severity": "LOW",
+      "description": "WebSocket connections should use WSS and validate origins",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/cloudflare-worker/src/worker.js",
+      "line": null,
+      "recommendation": "Use WSS instead of WS and implement origin validation",
+      "timestamp": "2025-08-29T23:56:18.454Z"
+    },
+    {
+      "id": "333911db-11a1-48cd-886a-91ab6a523ff4",
+      "category": "Input Validation",
+      "title": "Unsafe JSON Parsing",
+      "severity": "MEDIUM",
+      "description": "JSON.parse used without proper error handling",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+      "line": 902,
+      "recommendation": "Wrap JSON.parse in try-catch blocks",
+      "timestamp": "2025-08-29T23:56:18.454Z"
+    },
+    {
+      "id": "d72393c7-cf0b-438a-98c0-3bffd12617ac",
+      "category": "Input Validation",
+      "title": "Unsafe JSON Parsing",
+      "severity": "MEDIUM",
+      "description": "JSON.parse used without proper error handling",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+      "line": 952,
+      "recommendation": "Wrap JSON.parse in try-catch blocks",
+      "timestamp": "2025-08-29T23:56:18.454Z"
+    },
+    {
+      "id": "d3460723-9a53-490b-abda-0fa78a974eb7",
+      "category": "Input Validation",
+      "title": "Unsafe JSON Parsing",
+      "severity": "MEDIUM",
+      "description": "JSON.parse used without proper error handling",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+      "line": 987,
+      "recommendation": "Wrap JSON.parse in try-catch blocks",
+      "timestamp": "2025-08-29T23:56:18.454Z"
+    },
+    {
+      "id": "abbbde46-a07f-489e-9a5f-c20fdac44019",
+      "category": "Path Traversal Risk",
+      "title": "Direct File Path Usage",
+      "severity": "MEDIUM",
+      "description": "File paths used without apparent validation against traversal attacks",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+      "line": null,
+      "recommendation": "Validate and sanitize file paths, use path.resolve() and check against allowed directories",
+      "timestamp": "2025-08-29T23:56:18.454Z"
+    },
+    {
+      "id": "19b9b7db-99db-4027-b4e3-51f734a8bbcb",
+      "category": "SQL Injection Risk",
+      "title": "SQL-like Operations Detected",
+      "severity": "LOW",
+      "description": "Code contains SQL-like operations that should be parameterized",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+      "line": null,
+      "recommendation": "Use parameterized queries for any database operations",
+      "timestamp": "2025-08-29T23:56:18.455Z"
+    },
+    {
+      "id": "5f0e99b7-2eba-4d7a-a315-30de90e637b0",
+      "category": "SQL Injection Risk",
+      "title": "SQL-like Operations Detected",
+      "severity": "LOW",
+      "description": "Code contains SQL-like operations that should be parameterized",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+      "line": null,
+      "recommendation": "Use parameterized queries for any database operations",
+      "timestamp": "2025-08-29T23:56:18.455Z"
+    },
+    {
+      "id": "72b87410-e5eb-469b-bd2f-0e58c209f872",
+      "category": "Input Validation",
+      "title": "Unsafe JSON Parsing",
+      "severity": "MEDIUM",
+      "description": "JSON.parse used without proper error handling",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+      "line": 141,
+      "recommendation": "Wrap JSON.parse in try-catch blocks",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "19c16cb4-766e-4985-9b26-17e19f3ba095",
+      "category": "Input Validation",
+      "title": "Unsafe JSON Parsing",
+      "severity": "MEDIUM",
+      "description": "JSON.parse used without proper error handling",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+      "line": 279,
+      "recommendation": "Wrap JSON.parse in try-catch blocks",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "6aecfab7-bcb4-48ff-8cf1-561a82d70f3d",
+      "category": "Input Validation",
+      "title": "Unsafe JSON Parsing",
+      "severity": "MEDIUM",
+      "description": "JSON.parse used without proper error handling",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+      "line": 463,
+      "recommendation": "Wrap JSON.parse in try-catch blocks",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "b2a23270-609a-4203-b8b7-63f9b7130ad0",
+      "category": "Input Validation",
+      "title": "Unsafe JSON Parsing",
+      "severity": "MEDIUM",
+      "description": "JSON.parse used without proper error handling",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+      "line": 502,
+      "recommendation": "Wrap JSON.parse in try-catch blocks",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "e594980b-f5ab-4d46-b6d7-b836083752d6",
+      "category": "Path Traversal Risk",
+      "title": "Direct File Path Usage",
+      "severity": "MEDIUM",
+      "description": "File paths used without apparent validation against traversal attacks",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+      "line": null,
+      "recommendation": "Validate and sanitize file paths, use path.resolve() and check against allowed directories",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "2fc4af6f-8c4f-4be8-8d0e-1fd683f8efaf",
+      "category": "SQL Injection Risk",
+      "title": "SQL-like Operations Detected",
+      "severity": "LOW",
+      "description": "Code contains SQL-like operations that should be parameterized",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+      "line": null,
+      "recommendation": "Use parameterized queries for any database operations",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "71610226-fc40-4b11-a16f-e0b20bc6d907",
+      "category": "SQL Injection Risk",
+      "title": "SQL-like Operations Detected",
+      "severity": "LOW",
+      "description": "Code contains SQL-like operations that should be parameterized",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+      "line": null,
+      "recommendation": "Use parameterized queries for any database operations",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "791fa4aa-c5ad-47fc-a28e-99ab9db09116",
+      "category": "Session Security",
+      "title": "Weak Session ID Generation",
+      "severity": "HIGH",
+      "description": "Session IDs may not be generated with sufficient randomness",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/memory-cloude.js",
+      "line": null,
+      "recommendation": "Use crypto.randomUUID() or crypto.randomBytes() for session ID generation",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "d0319dc8-3394-4bc2-bf91-7d4f0e46042f",
+      "category": "Session Management",
+      "title": "No Session Expiration Logic",
+      "severity": "MEDIUM",
+      "description": "No apparent session expiration or cleanup mechanism",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/memory-cloude.js",
+      "line": null,
+      "recommendation": "Implement session timeout and cleanup mechanisms",
+      "timestamp": "2025-08-29T23:56:18.457Z"
+    },
+    {
+      "id": "2914e924-ccd9-497c-acdf-afe8bdda855d",
+      "category": "Session Security",
+      "title": "Weak Session ID Generation",
+      "severity": "HIGH",
+      "description": "Session IDs may not be generated with sufficient randomness",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+      "line": null,
+      "recommendation": "Use crypto.randomUUID() or crypto.randomBytes() for session ID generation",
+      "timestamp": "2025-08-29T23:56:18.457Z"
+    },
+    {
+      "id": "80ea8f8d-668a-4319-9f45-5d0ceedc8c5b",
+      "category": "Session Security",
+      "title": "Unencrypted Session Data",
+      "severity": "MEDIUM",
+      "description": "Session data may be stored without encryption",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+      "line": null,
+      "recommendation": "Encrypt sensitive session data before storage",
+      "timestamp": "2025-08-29T23:56:18.457Z"
+    },
+    {
+      "id": "bc40a4e7-5b8f-4b4e-9c61-5019b06c0664",
+      "category": "Session Management",
+      "title": "No Session Expiration Logic",
+      "severity": "MEDIUM",
+      "description": "No apparent session expiration or cleanup mechanism",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+      "line": null,
+      "recommendation": "Implement session timeout and cleanup mechanisms",
+      "timestamp": "2025-08-29T23:56:18.457Z"
+    },
+    {
+      "id": "b01f06f5-4cc7-4141-b5f4-aacee60928a6",
+      "category": "CORS Security",
+      "title": "Permissive CORS Policy",
+      "severity": "MEDIUM",
+      "description": "CORS allows requests from any origin",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/cloudflare-worker/src/worker.js",
+      "line": null,
+      "recommendation": "Restrict CORS to specific trusted origins",
+      "timestamp": "2025-08-29T23:56:18.482Z"
+    }
+  ],
+  "vulnerabilities": [
+    {
+      "id": "f814bd68-ef14-43ac-bd53-cd20eea4690d",
+      "category": "Data Protection",
+      "title": "No Encryption Implementation Found",
+      "severity": "HIGH",
+      "description": "Sensitive data may be stored without encryption",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+      "line": null,
+      "recommendation": "Implement encryption for sensitive data storage using Node.js crypto module",
+      "timestamp": "2025-08-29T23:56:18.440Z"
+    },
+    {
+      "id": "791fa4aa-c5ad-47fc-a28e-99ab9db09116",
+      "category": "Session Security",
+      "title": "Weak Session ID Generation",
+      "severity": "HIGH",
+      "description": "Session IDs may not be generated with sufficient randomness",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/memory-cloude.js",
+      "line": null,
+      "recommendation": "Use crypto.randomUUID() or crypto.randomBytes() for session ID generation",
+      "timestamp": "2025-08-29T23:56:18.456Z"
+    },
+    {
+      "id": "2914e924-ccd9-497c-acdf-afe8bdda855d",
+      "category": "Session Security",
+      "title": "Weak Session ID Generation",
+      "severity": "HIGH",
+      "description": "Session IDs may not be generated with sufficient randomness",
+      "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+      "line": null,
+      "recommendation": "Use crypto.randomUUID() or crypto.randomBytes() for session ID generation",
+      "timestamp": "2025-08-29T23:56:18.457Z"
+    }
+  ],
+  "recommendations": [
+    {
+      "category": "Data Protection",
+      "priority": "HIGH",
+      "issueCount": 1,
+      "criticalCount": 0,
+      "highCount": 1,
+      "recommendation": "Implement encryption for sensitive data storage and transmission."
+    },
+    {
+      "category": "Session Security",
+      "priority": "HIGH",
+      "issueCount": 3,
+      "criticalCount": 0,
+      "highCount": 2,
+      "recommendation": "Improve session management with proper ID generation, encryption, and expiration."
+    }
+  ],
+  "complianceChecks": {
+    "OWASP Top 10 2021": {
+      "A01 Broken Access Control": false,
+      "A02 Cryptographic Failures": false,
+      "A03 Injection": false,
+      "A07 Identification and Authentication Failures": false,
+      "A09 Security Logging and Monitoring Failures": true,
+      "A10 Server-Side Request Forgery": true
+    },
+    "Security Best Practices": {
+      "Environment Variable Usage": true,
+      "HTTPS Enforcement": true,
+      "Input Validation": false,
+      "Error Handling": true
+    }
+  },
+  "actionPlan": {
+    "immediate": [],
+    "shortTerm": [
+      {
+        "action": "Implement encryption for sensitive data storage using Node.js crypto module",
+        "issue": "No Encryption Implementation Found",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+        "estimatedEffort": "Medium"
+      },
+      {
+        "action": "Use crypto.randomUUID() or crypto.randomBytes() for session ID generation",
+        "issue": "Weak Session ID Generation",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/memory-cloude.js",
+        "estimatedEffort": "Medium"
+      },
+      {
+        "action": "Use crypto.randomUUID() or crypto.randomBytes() for session ID generation",
+        "issue": "Weak Session ID Generation",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+        "estimatedEffort": "Medium"
+      }
+    ],
+    "longTerm": [
+      {
+        "action": "Restrict directory permissions: chmod o-r",
+        "issue": "World-Readable Sensitive Directory",
+        "file": "/Users/nb/.cloude",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Restrict directory permissions: chmod o-r",
+        "issue": "World-Readable Sensitive Directory",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Quote all variables: \"$variable\" instead of $variable",
+        "issue": "Unquoted Variable in Shell Script",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/deployment/execute-strategic-deployment.sh",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Restrict directory permissions: chmod 700",
+        "issue": "World-Readable Data Directory",
+        "file": "/Users/nb/.cloude",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Use WSS instead of WS and implement origin validation",
+        "issue": "WebSocket Usage Detected",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Use WSS instead of WS and implement origin validation",
+        "issue": "WebSocket Usage Detected",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/cloudflare-worker/src/worker.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Wrap JSON.parse in try-catch blocks",
+        "issue": "Unsafe JSON Parsing",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Wrap JSON.parse in try-catch blocks",
+        "issue": "Unsafe JSON Parsing",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Wrap JSON.parse in try-catch blocks",
+        "issue": "Unsafe JSON Parsing",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Validate and sanitize file paths, use path.resolve() and check against allowed directories",
+        "issue": "Direct File Path Usage",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Use parameterized queries for any database operations",
+        "issue": "SQL-like Operations Detected",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Use parameterized queries for any database operations",
+        "issue": "SQL-like Operations Detected",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/index.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Wrap JSON.parse in try-catch blocks",
+        "issue": "Unsafe JSON Parsing",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Wrap JSON.parse in try-catch blocks",
+        "issue": "Unsafe JSON Parsing",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Wrap JSON.parse in try-catch blocks",
+        "issue": "Unsafe JSON Parsing",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Wrap JSON.parse in try-catch blocks",
+        "issue": "Unsafe JSON Parsing",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Validate and sanitize file paths, use path.resolve() and check against allowed directories",
+        "issue": "Direct File Path Usage",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Use parameterized queries for any database operations",
+        "issue": "SQL-like Operations Detected",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Use parameterized queries for any database operations",
+        "issue": "SQL-like Operations Detected",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/chittychat-client.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Implement session timeout and cleanup mechanisms",
+        "issue": "No Session Expiration Logic",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/memory-cloude.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Encrypt sensitive session data before storage",
+        "issue": "Unencrypted Session Data",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Implement session timeout and cleanup mechanisms",
+        "issue": "No Session Expiration Logic",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/lib/cloude-consciousness.js",
+        "estimatedEffort": "Low"
+      },
+      {
+        "action": "Restrict CORS to specific trusted origins",
+        "issue": "Permissive CORS Policy",
+        "file": "/Volumes/thumb/Projects/chittyos/chittyops/project-awareness/cloudflare-worker/src/worker.js",
+        "estimatedEffort": "Low"
+      }
+    ]
+  }
+}

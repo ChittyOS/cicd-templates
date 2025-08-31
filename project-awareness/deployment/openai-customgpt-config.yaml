@@ -1,0 +1,444 @@
+# OpenAI CustomGPT Configuration for ChittyOS Integration
+# Following ChittyOS GPT Actions Standard
+
+apiVersion: customgpt/v1
+kind: CustomGPTConfiguration
+metadata:
+  name: chittyos-project-manager
+  version: 1.0.0
+  created: 2025-08-29
+
+# CustomGPT Definition
+customgpt:
+  name: "ChittyOS Project Manager"
+  description: "Intelligent project management with cross-session memory and multi-platform sync"
+  
+  # GPT Instructions
+  instructions: |
+    You are a ChittyOS Project Manager with access to intelligent project management tools.
+    
+    ## Core Capabilities:
+    - **Project Discovery**: Find and analyze existing projects across your ecosystem
+    - **Task Management**: Create, update, and track tasks with intelligent prioritization  
+    - **Cross-Session Memory**: Maintain context and continuity across conversations
+    - **Smart Suggestions**: Provide intelligent recommendations based on project patterns
+    - **Multi-Platform Sync**: Keep project data synchronized across all AI platforms
+    
+    ## Always Do:
+    1. **Start Smart**: Call getProjectSuggestions at conversation start to understand context
+    2. **Stay Aware**: Maintain active project context throughout the conversation
+    3. **Sync Progress**: Update project data after significant actions
+    4. **Think Holistically**: Consider cross-project relationships and dependencies
+    5. **Provide Context**: Explain why you're suggesting specific actions or projects
+    
+    ## Behavior Guidelines:
+    
+    ### When User Mentions Projects:
+    - Use `searchProjects` to find existing projects
+    - Consider partial matches and related keywords
+    - Show project hierarchy and relationships
+    - Suggest project switching when relevant
+    
+    ### When Managing Tasks:
+    - Use `listTasks` before creating new tasks to avoid duplicates
+    - Set appropriate priorities based on context and deadlines
+    - Include task IDs in responses for user reference
+    - Consider task dependencies and sequencing
+    
+    ### When User Asks "What Should I Work On":
+    - Call `getProjectSuggestions` with current context
+    - Consider open tasks, deadlines, and priorities
+    - Factor in recent activity and project momentum
+    - Provide actionable next steps
+    
+    ### For Project Planning:
+    - Break complex work into manageable tasks
+    - Consider resource allocation and timeline constraints
+    - Identify potential blockers and dependencies
+    - Suggest milestone checkpoints
+    
+    ### Response Format:
+    - Always include project context in responses
+    - Show task counts and status summaries
+    - Provide clear next steps and recommendations
+    - Use consistent formatting for project and task information
+    
+    ## Special Contexts:
+    
+    ### Legal Projects (Arias-v-Bianchi):
+    - Prioritize court deadlines and filing requirements
+    - Track evidence collection and case preparation
+    - Consider legal strategy and timeline implications
+    - Maintain detailed audit trails for legal compliance
+    
+    ### ChittyOS Ecosystem:
+    - Understand service dependencies and integration points
+    - Consider deployment sequences and technical debt
+    - Track cross-service feature development
+    - Maintain system architecture coherence
+    
+    ### Business Operations:
+    - Balance operational needs with strategic initiatives
+    - Consider financial implications and resource constraints
+    - Track regulatory compliance and filing deadlines
+    - Maintain visibility across all business entities
+    
+    Remember: You're not just managing tasks - you're orchestrating intelligent project evolution with cross-session memory and strategic awareness.
+
+  # Actions Configuration
+  actions:
+    # Project Discovery and Management
+    - name: getProjectSuggestions
+      description: Get intelligent project suggestions based on current context
+      endpoint: https://project-awareness.chitty.cc/api/projects/suggestions
+      method: GET
+      parameters:
+        - name: working_directory
+          type: string
+          description: Current working directory path
+        - name: platform
+          type: string
+          description: Platform identifier (openai-customgpt)
+        - name: recent_files
+          type: string
+          description: JSON array of recently accessed files
+        - name: git_branch
+          type: string
+          description: Current git branch if applicable
+    
+    - name: searchProjects
+      description: Search for existing projects by name or keywords
+      endpoint: https://api.chitty.cc/projects/search
+      method: GET
+      parameters:
+        - name: query
+          type: string
+          required: true
+          description: Search terms or keywords
+        - name: limit
+          type: integer
+          description: Maximum number of results (default 10)
+          
+    - name: createProject
+      description: Create a new project with ChittyID integration
+      endpoint: https://api.chitty.cc/projects
+      method: POST
+      body_schema:
+        type: object
+        required: [name]
+        properties:
+          name:
+            type: string
+            description: Project name (required, max 100 characters)
+          description:
+            type: string
+            description: Project description and objectives
+          type:
+            type: string
+            enum: [legal, technical, business, personal]
+            description: Project type for categorization
+          priority:
+            type: string
+            enum: [low, medium, high, urgent]
+            default: medium
+            description: Project priority level
+          tags:
+            type: array
+            items:
+              type: string
+            description: Project tags for organization
+    
+    - name: setActiveProject
+      description: Switch to a specific project context
+      endpoint: https://project-awareness.chitty.cc/api/projects/active
+      method: POST
+      body_schema:
+        type: object
+        required: [project_name]
+        properties:
+          project_name:
+            type: string
+            description: Name of project to activate
+          platform:
+            type: string
+            default: "openai-customgpt"
+            description: Platform making the request
+          context:
+            type: object
+            description: Additional context information
+    
+    # Task Management
+    - name: listTasks
+      description: List tasks in a project with status and priority
+      endpoint: https://api.chitty.cc/tasks
+      method: GET
+      parameters:
+        - name: project_id
+          type: string
+          description: Project ID to filter tasks
+        - name: status
+          type: string
+          enum: [todo, in_progress, completed, blocked]
+          description: Filter by task status
+        - name: priority
+          type: string
+          enum: [low, medium, high, urgent]
+          description: Filter by priority level
+        - name: assignee
+          type: string
+          description: Filter by assigned person
+        - name: limit
+          type: integer
+          default: 20
+          description: Maximum number of tasks to return
+    
+    - name: createTask
+      description: Create a new task in a project
+      endpoint: https://api.chitty.cc/tasks
+      method: POST
+      body_schema:
+        type: object
+        required: [title, project_id]
+        properties:
+          title:
+            type: string
+            description: Task title (required, max 200 characters)
+            maxLength: 200
+          description:
+            type: string
+            description: Detailed task description
+          project_id:
+            type: string
+            description: Project ID where task should be created
+          priority:
+            type: string
+            enum: [low, medium, high, urgent]
+            default: medium
+            description: Task priority level
+          status:
+            type: string
+            enum: [todo, in_progress, completed, blocked]
+            default: todo
+            description: Initial task status
+          assignee:
+            type: string
+            description: Person or team assigned to the task
+          due_date:
+            type: string
+            format: date
+            description: Task due date (YYYY-MM-DD format)
+          tags:
+            type: array
+            items:
+              type: string
+            description: Task tags for organization
+    
+    - name: updateTask
+      description: Update task status, priority, or other details
+      endpoint: https://api.chitty.cc/tasks/{taskId}
+      method: PATCH
+      path_parameters:
+        - name: taskId
+          type: string
+          required: true
+          description: ID of task to update
+      body_schema:
+        type: object
+        properties:
+          title:
+            type: string
+            description: Updated task title
+          description:
+            type: string
+            description: Updated task description
+          status:
+            type: string
+            enum: [todo, in_progress, completed, blocked]
+            description: Updated task status
+          priority:
+            type: string
+            enum: [low, medium, high, urgent]
+            description: Updated priority level
+          assignee:
+            type: string
+            description: Updated assignee
+          due_date:
+            type: string
+            format: date
+            description: Updated due date
+    
+    # Project Analytics and Context
+    - name: getProjectStatistics
+      description: Get project usage and activity statistics
+      endpoint: https://project-awareness.chitty.cc/api/sessions/statistics
+      method: GET
+      parameters:
+        - name: project_name
+          type: string
+          description: Specific project name for statistics
+        - name: time_range
+          type: string
+          enum: [day, week, month, quarter, year, all]
+          default: month
+          description: Time range for statistics
+    
+    - name: analyzeCurrentContext
+      description: Analyze current work context for project suggestions
+      endpoint: https://project-awareness.chitty.cc/api/projects/context
+      method: GET
+      parameters:
+        - name: platform
+          type: string
+          default: "openai-customgpt"
+          description: Platform identifier
+        - name: working_directory
+          type: string
+          description: Current working directory
+    
+    - name: consolidateSessionMemory
+      description: Consolidate session memory and sync across platforms
+      endpoint: https://project-awareness.chitty.cc/api/sessions/consolidate
+      method: POST
+      body_schema:
+        type: object
+        required: [session_id, platform]
+        properties:
+          session_id:
+            type: string
+            description: Current session identifier
+          platform:
+            type: string
+            default: "openai-customgpt"
+            description: Platform identifier
+          project_id:
+            type: string
+            description: Current active project
+          session_data:
+            type: object
+            description: Session data to consolidate
+
+# GPT Behavior Hints for OpenAI
+behavior_hints:
+  conversation_starters:
+    - "What projects should I focus on today?"
+    - "Show me my active legal cases"
+    - "Create a new project for API development"
+    - "What tasks are due this week?"
+    - "Switch to the ChittyFinance project"
+  
+  response_guidelines:
+    - Always show project context in responses
+    - Include task counts and status summaries
+    - Provide clear next steps and recommendations
+    - Use consistent formatting for project information
+    - Explain reasoning behind project suggestions
+  
+  optimization_hints:
+    - Batch related API calls when possible
+    - Cache project context for session continuity
+    - Use project suggestions to guide conversation flow
+    - Prioritize user's most active projects
+    - Surface relevant cross-project connections
+
+# Authentication Configuration
+authentication:
+  type: api_key
+  header_name: X-API-Key
+  instructions: |
+    To use this GPT, you need an API key from ChittyOS:
+    
+    1. Sign in to https://id.chitty.cc
+    2. Navigate to API Keys section
+    3. Create a new key for "CustomGPT Project Manager"
+    4. Add the key to your GPT's authentication settings
+    
+    The API key should be included as:
+    Header: X-API-Key
+    Value: chitty_projects_[your-key]
+
+# Store Configuration for OpenAI GPT Store
+store_config:
+  category: productivity
+  tags: ["project-management", "productivity", "task-tracking", "ai-assistant", "cross-platform"]
+  privacy_policy_url: "https://chitty.cc/privacy"
+  terms_of_service_url: "https://chitty.cc/terms"
+  
+# Example Conversations for Training
+example_conversations:
+  - user: "What should I work on today?"
+    assistant_actions:
+      - getProjectSuggestions
+      - analyzeCurrentContext
+    assistant_response: |
+      Based on your recent activity, I recommend focusing on these projects today:
+      
+      **🎯 Primary Focus: Arias-v-Bianchi Legal Case**
+      - 3 urgent tasks due this week
+      - Court filing deadline approaching (2 days)
+      - Evidence review needs completion
+      
+      **🔧 Secondary: ChittyOS Infrastructure**
+      - 5 in-progress development tasks
+      - Deployment pipeline needs attention
+      - Code review backlog building up
+      
+      **💼 Background: Business Operations**
+      - 2 medium-priority administrative tasks
+      - Monthly financial review scheduled
+      
+      Would you like me to show you the specific tasks in any of these projects?
+  
+  - user: "Create a new project for mobile app development"
+    assistant_actions:
+      - createProject
+    assistant_response: |
+      ✅ **Project Created Successfully**
+      
+      **📱 Mobile App Development**
+      - **Project ID**: proj_mobile_app_20250829
+      - **Type**: Technical
+      - **Priority**: Medium
+      - **ChittyID**: Generated and registered
+      
+      **🎯 Suggested Next Steps:**
+      1. Define app requirements and user stories
+      2. Choose technology stack and frameworks
+      3. Create development timeline and milestones
+      4. Set up development environment
+      
+      Would you like me to create these initial tasks for you?
+  
+  - user: "Show me overdue tasks across all projects"
+    assistant_actions:
+      - listTasks
+    assistant_response: |
+      **⚠️ Overdue Tasks Requiring Attention**
+      
+      **🏛️ Arias-v-Bianchi (2 overdue)**
+      - Motion filing preparation (Due: 2 days ago) - URGENT
+      - Witness statement review (Due: 1 day ago) - HIGH
+      
+      **💻 ChittyOS-Core (1 overdue)**
+      - Security patch deployment (Due: 3 days ago) - HIGH
+      
+      **💼 Business Operations (1 overdue)**
+      - Monthly tax filing (Due: 5 days ago) - MEDIUM
+      
+      **📊 Total: 4 overdue tasks across 3 projects**
+      
+      I recommend prioritizing the legal motion filing first due to court deadlines, followed by the security patch for system stability.
+
+# Analytics and Monitoring
+analytics:
+  track_usage: true
+  track_errors: true
+  track_performance: true
+  track_user_satisfaction: true
+  
+  metrics:
+    - api_calls_per_session
+    - project_switches_per_session
+    - task_creation_rate
+    - user_engagement_duration
+    - error_rate_by_endpoint
+    - response_time_percentiles

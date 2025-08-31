@@ -1,0 +1,44 @@
+{
+  "name": "@chittyops/project-awareness",
+  "version": "1.0.0",
+  "description": "ChittyOS Project Awareness System - Cross-session intelligence with ChittyID integration",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js init",
+    "analyze": "node index.js analyze",
+    "test": "node test/test-analyzer.js",
+    "install-hooks": "node scripts/install-hooks.js",
+    "install-claude-extension": "node scripts/install-claude-extension.js",
+    "deploy-to-claude": "node scripts/deploy-to-claude.js"
+  },
+  "keywords": [
+    "chittyos",
+    "chittyops",
+    "project-awareness",
+    "cross-session-intelligence",
+    "chittyid-integration",
+    "memory-claude",
+    "claude-code-extension",
+    "session-analysis"
+  ],
+  "author": "ChittyOS Team",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.14.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "claudeExtension": {
+    "hooks": {
+      "onStart": "project-awareness-startup.sh",
+      "preToolUse": "project-awareness-pretool.sh", 
+      "postToolUse": "project-awareness-posttool.sh"
+    },
+    "permissions": [
+      "session_analysis",
+      "project_switching",
+      "chittychat_integration"
+    ]
+  }
+}

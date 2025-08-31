@@ -1,0 +1,302 @@
+# Phase 1: Foundation Infrastructure Deployment Configuration
+# Strategic deployment for ChittyOS multi-platform connectors
+
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  name: chittyos-phase1-infrastructure
+  description: Foundation infrastructure for ChittyOS multi-platform integration
+  version: 1.0.0
+
+# Cloudflare Workers Deployment Configuration
+workers:
+  project-awareness:
+    name: chittyops-project-awareness
+    domain: project-awareness.chitty.cc
+    staging_domain: project-awareness-staging.chitty.cc
+    source_path: /Volumes/thumb/Projects/chittyos/chittyops/project-awareness/cloudflare-worker
+    deployment_command: npm run deploy
+    environment_variables:
+      ENVIRONMENT: production
+      CHITTY_REGISTRY_URL: https://registry.chitty.cc
+      CHITTYCHAT_API_URL: https://api.chitty.cc
+      CHITTYID_API_URL: https://id.chitty.cc
+      CORS_ORIGIN: "*"
+      SESSION_TIMEOUT: "3600"
+      MAX_SESSIONS_PER_IP: "10"
+      RATE_LIMIT_RPM: "1000"
+    
+  mcp-server:
+    name: chittyops-mcp-server
+    domain: mcp.chitty.cc
+    staging_domain: mcp-staging.chitty.cc
+    source_path: /Volumes/thumb/Projects/chittyos/chittyops/project-awareness/mcp-server-worker
+    deployment_command: npm run deploy
+    environment_variables:
+      ENVIRONMENT: production
+      CHATGPT_OAUTH_CLIENT_ID: chittychat-mcp
+      MCP_PROTOCOL_VERSION: "2024-11-05"
+      WEBSOCKET_TIMEOUT: "300000"
+      MAX_CONNECTIONS: "1000"
+    
+  auth-provider:
+    name: chittyos-auth-provider
+    domain: auth.chitty.cc
+    staging_domain: auth-staging.chitty.cc
+    source_path: /Volumes/thumb/Projects/chittyos/chittyops/project-awareness/auth-worker
+    deployment_command: npm run deploy
+    environment_variables:
+      ENVIRONMENT: production
+      OAUTH_TOKEN_EXPIRY: "3600"
+      REFRESH_TOKEN_EXPIRY: "2592000"
+      JWT_ALGORITHM: "ES256"
+
+# Storage Configuration
+storage:
+  kv_namespaces:
+    - name: SESSION_STORE
+      id: chittyops_sessions
+      preview_id: chittyops_sessions_preview
+      description: Platform session storage
+      
+    - name: PROJECT_STORE  
+      id: chittyops_projects
+      preview_id: chittyops_projects_preview
+      description: Project context and metadata
+      
+    - name: CROSS_PLATFORM_SYNC
+      id: chittyops_cross_platform
+      preview_id: chittyops_cross_platform_preview
+      description: Cross-platform synchronization data
+      
+    - name: AUTH_STORE
+      id: chittyops_auth
+      preview_id: chittyops_auth_preview
+      description: Authentication tokens and sessions
+      
+  r2_buckets:
+    - name: PROJECT_DATA_BUCKET
+      bucket_name: chittyops-project-data
+      preview_bucket_name: chittyops-project-data-preview
+      description: Persistent project data and session history
+      lifecycle_rules:
+        - days: 90
+          action: delete
+          
+    - name: ANALYTICS_BUCKET
+      bucket_name: chittyops-analytics
+      preview_bucket_name: chittyops-analytics-preview
+      description: Usage analytics and performance data
+      lifecycle_rules:
+        - days: 365
+          action: archive
+
+# Durable Objects Configuration  
+durable_objects:
+  - name: PROJECT_AWARENESS_DO
+    class_name: ProjectAwarenessDurableObject
+    description: WebSocket connections for real-time project awareness
+    
+  - name: SESSION_SYNC_DO
+    class_name: SessionSyncDurableObject
+    description: Cross-session synchronization and state management
+    
+  - name: AUTH_SESSION_DO
+    class_name: AuthSessionDurableObject
+    description: Authentication session management
+
+# Analytics and Monitoring
+analytics:
+  datasets:
+    - name: USAGE_ANALYTICS
+      dataset: chittyops_usage
+      description: API usage and performance metrics
+      
+    - name: ERROR_ANALYTICS
+      dataset: chittyops_errors
+      description: Error tracking and debugging data
+
+# Secrets Configuration (deployed via wrangler secret)
+secrets:
+  required:
+    - CHITTYID_API_KEY
+    - CHITTYCHAT_API_KEY
+    - REGISTRY_API_KEY
+    - SESSION_ENCRYPTION_KEY
+    - WEBHOOK_SECRET
+    - JWT_PRIVATE_KEY
+    - JWT_PUBLIC_KEY
+  optional:
+    - OPENAI_API_KEY
+    - ANTHROPIC_API_KEY
+    - SLACK_WEBHOOK_URL
+    - PAGERDUTY_API_KEY
+
+# DNS and Domain Configuration
+domains:
+  - domain: project-awareness.chitty.cc
+    service: project-awareness
+    ssl: true
+    cdn: true
+    waf: enabled
+    
+  - domain: mcp.chitty.cc
+    service: mcp-server
+    ssl: true
+    cdn: true
+    waf: enabled
+    websocket: true
+    
+  - domain: auth.chitty.cc
+    service: auth-provider
+    ssl: true
+    cdn: true
+    waf: enabled
+    rate_limiting: strict
+
+# Health Monitoring Configuration
+monitoring:
+  health_checks:
+    - name: project-awareness-health
+      url: https://project-awareness.chitty.cc/health
+      interval: 60
+      timeout: 10
+      expected_status: 200
+      
+    - name: mcp-server-health
+      url: https://mcp.chitty.cc/health
+      interval: 60
+      timeout: 10
+      expected_status: 200
+      
+    - name: auth-provider-health
+      url: https://auth.chitty.cc/health
+      interval: 60
+      timeout: 10
+      expected_status: 200
+
+  alerts:
+    critical:
+      - condition: health_check_failure
+        threshold: 2_consecutive_failures
+        notification: pagerduty
+        
+      - condition: error_rate_high
+        threshold: 5_percent_5_minutes
+        notification: pagerduty
+        
+      - condition: response_time_high
+        threshold: 500ms_95th_percentile
+        notification: pagerduty
+        
+    warning:
+      - condition: error_rate_elevated
+        threshold: 2_percent_5_minutes
+        notification: slack
+        
+      - condition: response_time_elevated
+        threshold: 300ms_95th_percentile
+        notification: slack
+
+# Rate Limiting Configuration
+rate_limiting:
+  global:
+    requests_per_minute: 1000
+    burst_size: 100
+    
+  by_endpoint:
+    "/api/auth/*": 
+      requests_per_minute: 60
+      burst_size: 10
+      
+    "/api/projects/suggestions":
+      requests_per_minute: 120
+      burst_size: 20
+      
+    "/ws":
+      connections_per_minute: 10
+      max_connections_per_ip: 5
+
+# Security Configuration
+security:
+  waf_rules:
+    - rule: block_bad_bots
+      enabled: true
+      
+    - rule: rate_limiting
+      enabled: true
+      
+    - rule: sql_injection_protection
+      enabled: true
+      
+    - rule: xss_protection
+      enabled: true
+      
+  cors:
+    allowed_origins: 
+      - "https://claude.ai"
+      - "https://chat.openai.com"
+      - "https://chatgpt.com"
+      - "chrome-extension://*"
+      - "moz-extension://*"
+    allowed_methods: ["GET", "POST", "OPTIONS"]
+    allowed_headers: ["Authorization", "Content-Type", "X-API-Key"]
+    max_age: 86400
+
+# Deployment Pipeline Configuration
+deployment:
+  stages:
+    development:
+      auto_deploy: true
+      branch: development
+      domain_suffix: -dev
+      
+    staging:
+      auto_deploy: false
+      branch: main
+      domain_suffix: -staging
+      manual_approval: true
+      
+    production:
+      auto_deploy: false
+      branch: production
+      manual_approval: true
+      rollback_enabled: true
+      
+  rollback_strategy:
+    type: blue_green
+    health_check_duration: 300
+    auto_rollback_on_failure: true
+    
+  testing:
+    pre_deployment:
+      - unit_tests
+      - integration_tests
+      - security_scan
+      - performance_test
+      
+    post_deployment:
+      - smoke_tests
+      - health_checks
+      - monitoring_validation
+
+# Migration Configuration
+migration:
+  from_local_mcp:
+    strategy: gradual_migration
+    phases:
+      - phase: 1
+        services: ["non_critical_services"]
+        rollback_timeout: 600
+        
+      - phase: 2
+        services: ["chittychat", "chittyid"]
+        rollback_timeout: 300
+        
+    fallback_enabled: true
+    health_monitoring: continuous
+    
+  configuration_sync:
+    local_config_path: /Users/nb/.claude/settings.local.json
+    cloud_config_endpoint: https://project-awareness.chitty.cc/api/config
+    sync_interval: 300

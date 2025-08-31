@@ -1,0 +1,477 @@
+# ChittyOS Project Awareness - Staging Environment Configuration
+# Comprehensive staging setup for pre-production testing and validation
+
+apiVersion: v1
+kind: StagingDeploymentConfig
+metadata:
+  name: chittyos-project-awareness-staging
+  description: Staging environment for comprehensive testing and validation
+  version: 1.0.0
+  created: 2025-08-30
+  maintainer: Cloudflare Optimization Specialist
+
+# Staging Infrastructure Configuration
+staging_infrastructure:
+  domains:
+    primary: "project-awareness-staging.chitty.cc"
+    api_endpoint: "api-staging.chitty.cc/project-awareness"
+    websocket: "ws-staging.chitty.cc/project-awareness"
+    monitoring: "monitor-staging.chitty.cc/project-awareness"
+    
+  ssl_configuration:
+    mode: "full_strict"
+    min_tls_version: "1.2"  # More permissive for testing
+    certificate_type: "universal"
+    hsts_enabled: false     # Disabled for easier testing
+    
+  dns_settings:
+    proxied: true
+    ttl: 300               # Shorter TTL for faster DNS propagation during testing
+
+# Cloudflare Workers Staging Configuration
+workers_config:
+  name: "chittyops-project-awareness-staging"
+  environment: "staging"
+  script_path: "src/worker.js"
+  
+  # Staging-optimized resource limits
+  limits:
+    cpu_ms: 50000          # Reduced for staging cost optimization
+    memory_mb: 256         # Reduced memory for staging
+    
+  # Staging environment variables
+  environment_variables:
+    ENVIRONMENT: "staging"
+    DEBUG_MODE: "true"     # Enable debug logging
+    VERBOSE_LOGGING: "true"
+    CHITTY_REGISTRY_URL: "https://registry-staging.chitty.cc"
+    CHITTYCHAT_API_URL: "https://chittychat-staging.chitty.cc"
+    CHITTYID_API_URL: "https://chittyid-staging.chitty.cc"
+    CORS_ORIGIN: "*"       # Permissive CORS for testing
+    RATE_LIMIT_RPM: "5000" # Higher rate limits for load testing
+    RATE_LIMIT_BURST: "250"
+    SESSION_TIMEOUT: "1800" # Shorter timeout for testing
+    CACHE_TTL: "300"       # Shorter cache for testing
+    PERFORMANCE_THRESHOLD_MS: "200" # More lenient performance threshold
+    ANALYTICS_SAMPLING_RATE: "0.1"  # 10% sampling for staging
+    LOAD_TEST_MODE: "true" # Enable load testing features
+
+# KV Storage Configuration for Staging
+kv_storage:
+  namespaces:
+    - binding: "SESSION_STORE"
+      id: "chittyops_sessions_staging"
+      description: "Staging session storage"
+      
+    - binding: "PROJECT_STORE"
+      id: "chittyops_projects_staging"
+      description: "Staging project data"
+      
+    - binding: "CROSS_PLATFORM_SYNC"
+      id: "chittyops_sync_staging"
+      description: "Staging sync data"
+      
+    - binding: "CACHE_STORE"
+      id: "chittyops_cache_staging"
+      description: "Staging cache storage"
+      
+    - binding: "ANALYTICS_STORE"
+      id: "chittyops_analytics_staging"
+      description: "Staging analytics data"
+      
+    - binding: "LOAD_TEST_DATA"
+      id: "chittyops_loadtest_staging"
+      description: "Load testing data storage"
+
+# R2 Storage Configuration for Staging
+r2_storage:
+  buckets:
+    - binding: "PROJECT_DATA_BUCKET"
+      bucket_name: "chittyops-project-data-staging"
+      description: "Staging project data storage"
+      lifecycle_rules:
+        - days: 7
+          action: delete    # Shorter retention for staging
+          
+    - binding: "ANALYTICS_BUCKET"
+      bucket_name: "chittyops-analytics-staging"
+      description: "Staging analytics storage"
+      lifecycle_rules:
+        - days: 30
+          action: delete    # Shorter retention for staging
+          
+    - binding: "LOAD_TEST_BUCKET"
+      bucket_name: "chittyops-loadtest-staging"
+      description: "Load testing data storage"
+      lifecycle_rules:
+        - days: 3
+          action: delete    # Very short retention for load test data
+
+# Durable Objects Configuration for Staging
+durable_objects:
+  - name: "PROJECT_AWARENESS_DO"
+    class_name: "ProjectAwarenessDurableObject"
+    description: "Staging WebSocket and real-time sync"
+    
+  - name: "SESSION_SYNC_DO"
+    class_name: "SessionSyncDurableObject"
+    description: "Staging cross-session synchronization"
+    
+  - name: "LOAD_TEST_DO"
+    class_name: "LoadTestDurableObject"
+    description: "Load testing coordination and metrics"
+
+# Analytics Engine Configuration for Staging
+analytics:
+  datasets:
+    - binding: "USAGE_ANALYTICS"
+      dataset: "chittyops_usage_staging"
+      retention_days: 30
+      
+    - binding: "PERFORMANCE_ANALYTICS"
+      dataset: "chittyops_performance_staging"
+      retention_days: 30
+      
+    - binding: "SECURITY_ANALYTICS"
+      dataset: "chittyops_security_staging"
+      retention_days: 30
+      
+    - binding: "LOAD_TEST_ANALYTICS"
+      dataset: "chittyops_loadtest_staging"
+      retention_days: 7
+
+# Staging-Specific Security Configuration
+security_config:
+  # Relaxed WAF rules for testing
+  waf_rules:
+    enabled: true
+    mode: "simulate"       # Log only, don't block
+    custom_rules:
+      - rule: "allow_load_testing"
+        priority: 1
+        action: "allow"
+        conditions:
+          header: "X-Load-Test"
+          value: "true"
+          
+  # Rate limiting configuration for staging
+  rate_limiting:
+    global:
+      requests_per_minute: 5000
+      burst_size: 250
+      
+    endpoints:
+      "/api/load-test/*":
+        requests_per_minute: 10000  # Very high for load testing
+        burst_size: 500
+        
+      "/api/auth/*":
+        requests_per_minute: 200    # Higher for testing
+        burst_size: 50
+        
+  # CORS configuration for testing
+  cors:
+    allowed_origins: ["*"]          # Permissive for testing
+    allowed_methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+    allowed_headers: ["*"]
+    max_age: 86400
+
+# Performance Testing Configuration
+performance_testing:
+  load_testing:
+    enabled: true
+    max_concurrent_users: 1000
+    test_duration_minutes: 30
+    ramp_up_duration_minutes: 5
+    
+  endpoints_to_test:
+    - endpoint: "/api/projects/suggestions"
+      method: "GET"
+      target_rps: 100
+      
+    - endpoint: "/api/sessions/register"
+      method: "POST"
+      target_rps: 50
+      
+    - endpoint: "/ws"
+      protocol: "websocket"
+      target_connections: 200
+      
+  performance_thresholds:
+    response_time_p95: 200         # More lenient for staging
+    response_time_p99: 500
+    error_rate: 2.0                # Higher error tolerance for staging
+    cpu_utilization: 80
+    memory_utilization: 70
+
+# Monitoring and Alerting for Staging
+monitoring:
+  health_checks:
+    - name: "staging_health_check"
+      url: "https://project-awareness-staging.chitty.cc/health"
+      interval: 120                # Less frequent for staging
+      timeout: 10
+      expected_status: 200
+      locations: ["WNAM", "WEU"]   # Fewer locations for staging
+      
+    - name: "staging_api_check"
+      url: "https://project-awareness-staging.chitty.cc/api/info"
+      interval: 300
+      timeout: 15
+      
+  alerting:
+    channels:
+      slack:
+        webhook_url: "${SLACK_WEBHOOK_URL}"
+        channel: "#chittyos-staging-alerts"
+        
+    rules:
+      critical:
+        - name: "Staging Service Down"
+          condition: "health_check_failures >= 5"
+          duration: "10m"
+          channels: ["slack"]
+          
+      warning:
+        - name: "Staging High Error Rate"
+          condition: "error_rate > 10%"
+          duration: "15m"
+          channels: ["slack"]
+          
+  dashboards:
+    - name: "Staging Performance"
+      metrics: ["response_time", "throughput", "error_rate"]
+      refresh_interval: 60
+      
+    - name: "Load Testing Results"
+      metrics: ["concurrent_users", "rps", "latency_distribution"]
+      refresh_interval: 30
+
+# Testing Automation Configuration
+automated_testing:
+  functional_tests:
+    enabled: true
+    test_suite_path: "test/qa-integration-tests.js"
+    schedule: "0 */4 * * *"        # Every 4 hours
+    
+  security_tests:
+    enabled: true
+    test_suite_path: "test/security-audit.js"
+    schedule: "0 2 * * *"          # Daily at 2 AM
+    
+  performance_tests:
+    enabled: true
+    test_suite_path: "test/load-tests.js"
+    schedule: "0 6 * * 0"          # Weekly on Sunday at 6 AM
+    
+  integration_tests:
+    enabled: true
+    platforms:
+      - "claude-code"
+      - "chatgpt"
+      - "claude-web"
+    schedule: "0 */6 * * *"        # Every 6 hours
+
+# Data Management for Staging
+data_management:
+  # Automated cleanup of test data
+  cleanup_policies:
+    - resource: "kv_namespaces"
+      retention: "7d"
+      pattern: "test_*"
+      
+    - resource: "r2_buckets" 
+      retention: "3d"
+      pattern: "loadtest_*"
+      
+    - resource: "analytics_data"
+      retention: "30d"
+      
+  # Test data seeding
+  seed_data:
+    enabled: true
+    datasets:
+      - name: "sample_projects"
+        source: "test/fixtures/projects.json"
+        target_kv: "PROJECT_STORE"
+        
+      - name: "sample_sessions"
+        source: "test/fixtures/sessions.json"
+        target_kv: "SESSION_STORE"
+
+# Deployment Pipeline for Staging
+deployment_pipeline:
+  triggers:
+    - branch: "develop"
+      auto_deploy: true
+      
+    - branch: "feature/*"
+      auto_deploy: false
+      manual_trigger: true
+      
+  pre_deployment:
+    steps:
+      - name: "Run Unit Tests"
+        command: "npm test"
+        
+      - name: "Security Scan"
+        command: "npm run security:scan"
+        
+      - name: "Build Staging"
+        command: "npm run build:staging"
+        
+  post_deployment:
+    steps:
+      - name: "Smoke Tests"
+        command: "npm run test:smoke:staging"
+        
+      - name: "Health Check Validation"
+        command: "npm run health:check:staging"
+        
+      - name: "Load Test (Light)"
+        command: "npm run loadtest:light:staging"
+        
+  rollback_strategy:
+    automatic: true
+    health_check_timeout: 300      # 5 minutes
+    rollback_on_failure: true
+
+# Integration Testing Configuration
+integration_testing:
+  external_services:
+    - service: "chittychat_staging"
+      endpoint: "https://chittychat-staging.chitty.cc"
+      health_check: "/health"
+      
+    - service: "chittyid_staging"
+      endpoint: "https://chittyid-staging.chitty.cc"
+      health_check: "/health"
+      
+    - service: "registry_staging"
+      endpoint: "https://registry-staging.chitty.cc"
+      health_check: "/health"
+      
+  ai_platforms:
+    - platform: "claude_code_sandbox"
+      test_mode: true
+      mock_responses: true
+      
+    - platform: "chatgpt_developer"
+      test_mode: true
+      mock_responses: true
+
+# Cost Optimization for Staging
+cost_optimization:
+  # Resource limits to control staging costs
+  budget_limits:
+    monthly_budget: "$100"
+    alert_threshold: 80            # Alert at 80% of budget
+    
+  resource_scheduling:
+    # Automatically scale down during off-hours
+    scale_down:
+      schedule: "0 22 * * *"       # 10 PM daily
+      scale_factor: 0.5            # Reduce to 50%
+      
+    scale_up:
+      schedule: "0 6 * * 1-5"      # 6 AM weekdays
+      scale_factor: 1.0            # Full scale
+      
+  cleanup_automation:
+    # Automatic cleanup of old test data
+    enabled: true
+    retention_days: 7
+    cleanup_schedule: "0 1 * * *"  # Daily at 1 AM
+
+# Documentation and Reporting
+reporting:
+  automated_reports:
+    - name: "Staging Health Report"
+      frequency: "daily"
+      recipients: ["team@chitty.cc"]
+      include_metrics: ["uptime", "performance", "errors"]
+      
+    - name: "Load Test Summary"
+      frequency: "weekly"
+      recipients: ["performance-team@chitty.cc"]
+      include_metrics: ["throughput", "latency", "success_rate"]
+      
+  dashboard_urls:
+    performance: "https://monitor-staging.chitty.cc/performance"
+    security: "https://monitor-staging.chitty.cc/security"
+    business: "https://monitor-staging.chitty.cc/business"
+
+# Validation Checklist for Staging Deployment
+validation_checklist:
+  infrastructure:
+    - "Staging domains configured and accessible"
+    - "SSL certificates installed and valid"
+    - "DNS propagation completed"
+    - "CDN configuration active"
+    
+  services:
+    - "Workers deployed and responding"
+    - "KV namespaces created and accessible"
+    - "R2 buckets created and accessible"
+    - "Durable Objects deployed and functional"
+    - "Analytics Engine datasets created"
+    
+  security:
+    - "WAF rules configured in simulate mode"
+    - "Rate limiting configured with staging limits"
+    - "CORS configured for testing"
+    - "Security headers applied"
+    
+  monitoring:
+    - "Health checks configured and passing"
+    - "Alerting channels configured"
+    - "Dashboards accessible and populating"
+    - "Log aggregation working"
+    
+  testing:
+    - "Automated test suites configured"
+    - "Load testing infrastructure ready"
+    - "Integration tests passing"
+    - "Performance thresholds configured"
+    
+  integration:
+    - "External service connections working"
+    - "AI platform integrations tested"
+    - "Cross-platform sync functional"
+    - "WebSocket connections stable"
+
+# Success Criteria for Staging
+success_criteria:
+  functional:
+    - "All API endpoints responding correctly"
+    - "WebSocket connections stable"
+    - "Cross-platform sync working"
+    - "Session management functional"
+    
+  performance:
+    - "Response times < 200ms (p95)"
+    - "Error rate < 2%"
+    - "Uptime > 99%"
+    - "Load test targets met"
+    
+  security:
+    - "Security scans passing"
+    - "No critical vulnerabilities"
+    - "Rate limiting working"
+    - "Access controls functional"
+    
+  integration:
+    - "All external services connected"
+    - "AI platform integrations working"
+    - "Monitoring and alerting active"
+    - "Automated testing passing"
+
+# Next Steps After Staging Validation
+next_steps:
+  - "Run comprehensive load testing for 24 hours"
+  - "Validate all AI platform integrations"
+  - "Complete security penetration testing"
+  - "Performance optimization based on staging results"
+  - "Documentation review and updates"
+  - "Production deployment preparation"
+  - "Go/No-Go decision for production deployment"
